@@ -18,7 +18,12 @@ pipeline {
         }
 		stage('Deliver') { 
             steps {
-                bat '../jenkins/scripts/deliver.sh' 
+                bat "
+		    	echo 'The following Maven command installs your Maven-built Java application'
+			echo 'into the local Maven repository, which will ultimately be stored in'
+			echo 'Jenkins''s local Maven repository (and the "maven-repository" Docker data'
+			echo 'volume).'
+		    "
             }
         }
     }
