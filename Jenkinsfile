@@ -1,11 +1,9 @@
 pipeline {
     agent any
+    environment {
+    	M2_HOME='C:\\apache-maven-3.8.8\\bin\\mvn'
+    }
     stages {
-	stage('Setup'){
-		steps {
-			def M2_HOME='C:\\apache-maven-3.8.8\\bin\\mvn'
-		}
-	}
         stage('Build') { 
             steps {
                 bat '$M2_HOME -B -DskipTests clean package' 
