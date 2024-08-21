@@ -1,30 +1,24 @@
 pipeline {
     agent any
     stages {
+	stage('Setup'){
+		var M2_HOME='C:\\apache-maven-3.8.8\\bin\\mvn'
+	}
         stage('Build') { 
             steps {
-                bat 'C:\\apache-maven-3.8.8\\bin\\mvn -B -DskipTests clean package' 
+                bat '$M2_HOME -B -DskipTests clean package' 
             }
         }
-		stage('Test') {
+	stage('Test') {
             steps {
-                bat 'C:\\apache-maven-3.8.8\\bin\\mvn test'
+                bat '$M2_HOME test'
             }
-            post {
+        post {
                 always {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
         }
-		stage('Deliver') { 
-            steps {
-                bat '''
-		    	echo "The following Maven command installs your Maven-built Java application"
-			echo "into the local Maven repository, which will ultimately be stored in"
-			echo "Jenkins''s local Maven repository (and the "maven-repository" Docker data"
-			echo "volume)."
-		    '''
-            }
-        }
+		
     }
 }
