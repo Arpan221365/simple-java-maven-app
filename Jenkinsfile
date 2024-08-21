@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
 	stage('Setup'){
-		var M2_HOME='C:\\apache-maven-3.8.8\\bin\\mvn'
+		steps {
+			var M2_HOME='C:\\apache-maven-3.8.8\\bin\\mvn'
+		}
 	}
         stage('Build') { 
             steps {
