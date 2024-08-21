@@ -6,12 +6,12 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                bat '$M2_HOME -B -DskipTests clean package' 
+                bat '${M2_HOME} -B -DskipTests clean package' 
             }
         }
 	stage('Test') {
             steps {
-                bat '$M2_HOME test'
+                bat '${M2_HOME} test'
             }
         post {
                 always {
