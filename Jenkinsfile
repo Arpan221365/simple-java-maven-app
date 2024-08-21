@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                bat 'C:\apache-maven-3.8.8\bin\mvn -B -DskipTests clean package' 
+                bat 'C:\\apache-maven-3.8.8\\bin\\mvn -B -DskipTests clean package' 
             }
         }
 		stage('Test') {
             steps {
-                bat 'C:\apache-maven-3.8.8\bin\mvn test'
+                bat 'C:\\apache-maven-3.8.8\\bin\\mvn test'
             }
             post {
                 always {
