@@ -3,7 +3,7 @@ pipeline {
     stages {
 	stage('Setup'){
 		steps {
-			var M2_HOME='C:\\apache-maven-3.8.8\\bin\\mvn'
+			def M2_HOME='C:\\apache-maven-3.8.8\\bin\\mvn'
 		}
 	}
         stage('Build') { 
