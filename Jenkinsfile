@@ -6,15 +6,12 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                bat '''
-			echo ${M2_HOME}
-			${M2_HOME} -B -DskipTests clean package
-   		''' 
+                bat 'C:\\apache-maven-3.8.8\\bin\\mvn -B -DskipTests clean package' 
             }
         }
 	stage('Test') {
             steps {
-                bat '${M2_HOME} test'
+                bat 'C:\\apache-maven-3.8.8\\bin\\mvn test'
             }
         post {
                 always {
