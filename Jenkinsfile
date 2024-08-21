@@ -6,7 +6,10 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                bat '${M2_HOME} -B -DskipTests clean package' 
+                bat '''
+			echo ${M2_HOME}
+			${M2_HOME} -B -DskipTests clean package
+   		''' 
             }
         }
 	stage('Test') {
